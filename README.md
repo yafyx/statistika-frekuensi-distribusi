@@ -1,4 +1,4 @@
-# Data Analysis with Python
+# Frequency Distribution with Python
 
 This Python script performs statistical analysis on a given dataset and generates a frequency distribution table. It calculates various measures such as mean, mode, median, quartiles, deciles, and percentiles. The analysis is based on the input data and user-defined parameters.
 
