@@ -14,7 +14,7 @@ def read_data(file_name):
             data = [int(x) for x in f.read().split(",")]
         return data
     except Exception as e:
-        logging.error(f"An error occurred while reading the file: {e}")
+        logging.error(f"Terjadi kesalahan saat membaca file: {e}")
         return []
 
 
@@ -31,13 +31,19 @@ def get_k(data, k_type):
     elif k_type == "f":
         k = math.floor(1 + 3.322 * math.log10(len(data)))
     else:
-        logging.warning("Invalid rounding type. Using ceiling as default.")
+        logging.warning(
+            "Jenis pembulatan tidak valid. Menggunakan ceiling sebagai default."
+        )
         k = math.ceil(1 + 3.322 * math.log10(len(data)))
     return k, k_type
 
 
 def get_user_input(prompt):
-    return int(input(prompt))
+    while True:
+        try:
+            return int(input(prompt))
+        except ValueError:
+            logging.error("Input tidak valid. Silakan masukkan bilangan Bulat.")
 
 
 def main():
