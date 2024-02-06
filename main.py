@@ -1,8 +1,11 @@
+import logging
 import math
 
 import numpy as np
 import pandas as pd
 from tabulate import tabulate
+
+logging.basicConfig(level=logging.INFO)
 
 
 def read_data(file_name):
@@ -11,15 +14,15 @@ def read_data(file_name):
             data = [int(x) for x in f.read().split(",")]
         return data
     except Exception as e:
-        print(f"An error occurred while reading the file: {e}")
+        logging.error(f"An error occurred while reading the file: {e}")
         return []
 
 
 def print_data(data):
-    print("Data:")
+    logging.info("Data:")
     for i in range(0, len(data), 10):
-        print(*data[i : i + 10])
-    print()
+        logging.info(*data[i : i + 10])
+    logging.info("")
 
 
 def get_k(data, k_type):
