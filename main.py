@@ -26,11 +26,13 @@ def print_data(data):
 
 
 def get_k(data, k_type):
-    k_func = {"c": math.ceil, "f": math.floor}
-    if k_type not in k_func:
-        print("Tipe pembulatan k tidak valid. Menggunakan ceiling sebagai default.")
-        k_type = "c"
-    k = k_func[k_type](1 + 3.322 * math.log10(len(data)))
+    if k_type == "c":
+        k = math.ceil(1 + 3.322 * math.log10(len(data)))
+    elif k_type == "f":
+        k = math.floor(1 + 3.322 * math.log10(len(data)))
+    else:
+        logging.warning("Invalid rounding type. Using ceiling as default.")
+        k = math.ceil(1 + 3.322 * math.log10(len(data)))
     return k, k_type
 
 
